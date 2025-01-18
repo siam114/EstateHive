@@ -12,22 +12,21 @@ const Navbar = () => {
 //   const { user, logOut } = useContext(AuthContext);
    const user = 'siam'
   const links = (
-    <div className="flex flex-col md:flex-row gap-2 md:gap-5 font-semibold">
+    <div className=" flex flex-col md:flex-row gap-2 md:gap-5 font-semibold">
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/all-queries">Queries</NavLink>
-      <NavLink to="/recommandation-me">Recommendations For Me</NavLink>
-      <NavLink to="/my-queries">My Queries</NavLink>
-      <NavLink to="/my-recommandation">My recommendations</NavLink>
+      <NavLink to="/about">About Us</NavLink>
+      <NavLink to="/a">All properties</NavLink>
+      <NavLink to="/b">Dashboard </NavLink>
     </div>
   );
   const links1 =(
     <div className="flex flex-col md:flex-row gap-2 md:gap-5 font-semibold">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/all-queries">Queries</NavLink>
+         <NavLink to="/">Home</NavLink>
+         <NavLink to="/about">About Us</NavLink>
     </div>
   )
   return (
-    <div className="navbar w-full mx-auto md:px-10 py-2 ">
+    <div className="navbar fixed z-50 bg-blue-100 w-full mx-auto md:px-10 py-2 ">
       <div className="navbar-start">
       <div className="dropdown">
           <div
