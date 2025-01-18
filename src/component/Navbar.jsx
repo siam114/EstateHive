@@ -1,16 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
-import {  useState } from "react";
+import {  useContext,useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoMdMenu } from "react-icons/io";
-// import { AuthContext } from "../context/AuthProvider";
+import { AuthContext } from "../context/AuthProvider";
 import { Tooltip as ReactTooltip } from 'react-tooltip';
 import logo from '/logo.jpg'
 
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-//   const { user, logOut } = useContext(AuthContext);
-   const user = 'siam'
+  const { user, logOut } = useContext(AuthContext);
   const links = (
     <div className=" flex flex-col md:flex-row gap-2 md:gap-5 font-semibold">
       <NavLink to="/">Home</NavLink>
@@ -75,7 +74,7 @@ const Navbar = () => {
               src={user?.photoURL}
               alt=''
             />
-            <p> {user && user?.displayName}</p>
+           <p className="font-semibold text-sm"> {user && user?.displayName}</p>
             <ReactTooltip id="user-tooltip" place="left" type="dark" effect="float" />
           </div>
         ) : null}
@@ -85,7 +84,7 @@ const Navbar = () => {
             Log-Out
           </button>
         ) : (
-          <Link to="/auth/login" className="btn btn-sm font-semibold ml-3 bg-[#363e942d]">
+          <Link to="/login" className="btn btn-sm font-semibold ml-3 bg-[#363e942d]">
             Login
           </Link>
         )}
