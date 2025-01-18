@@ -15,7 +15,9 @@
     "my-assignment12-estatehive-client": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.2",
+    "react-tooltip": "^5.28.0",
     "sort-by": "^1.2.0"
   },
   "devDependencies": {
