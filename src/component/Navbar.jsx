@@ -15,7 +15,7 @@ const Navbar = () => {
       <NavLink to="/">Home</NavLink>
       <NavLink to="/about">About Us</NavLink>
       <NavLink to="/a">All properties</NavLink>
-      <NavLink to="/b">Dashboard </NavLink>
+      <NavLink to="/dashboard">Dashboard </NavLink>
     </div>
   );
   const links1 =(
@@ -65,7 +65,7 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end">
-        {user && user?.photoURL ? (
+        {user && user?.email ? (
           <div className="flex flex-col items-center">
             <img
              data-tooltip-id="user-tooltip"
