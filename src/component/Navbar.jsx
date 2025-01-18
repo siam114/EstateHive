@@ -71,6 +71,7 @@ const Navbar = () => {
              data-tooltip-id="user-tooltip"
              data-tooltip-content={user?.displayName || "No username available"}
               className="w-10 h-10 rounded-full"
+              referrerPolicy='no-referrer'
               src={user?.photoURL}
               alt=''
             />
