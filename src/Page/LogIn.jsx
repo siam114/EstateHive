@@ -27,10 +27,9 @@ const LogIn = () => {
 
     signInUser(email, password)
       .then((result) => {
-        console.log(result);
         const user = result.user;
-        setUser(user);
         toast.success("Login successful!");
+        setUser(user);
         navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {

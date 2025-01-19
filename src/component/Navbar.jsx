@@ -47,7 +47,7 @@ const Navbar = () => {
         <Link to='/'>
          <div className="flex gap-.5 items-center">
           <img className="sm:w-10 sm:h-10 w-8 h-8 ml-1 rounded-full" src={logo} alt="" />
-          <p className="font-bold ml-2 text-2xl text-[#363e94]">EstateHive</p>
+          <p className="font-bold ml-2 md:text-2xl text-lg text-[#363e94]">EstateHive</p>
          </div>
         </Link>
       </div>
@@ -70,12 +70,12 @@ const Navbar = () => {
             <img
              data-tooltip-id="user-tooltip"
              data-tooltip-content={user?.displayName || "No username available"}
-              className="w-10 h-10 rounded-full"
+              className="w-8 h-8 rounded-full"
               referrerPolicy='no-referrer'
               src={user?.photoURL}
               alt=''
             />
-           <p className="font-semibold text-sm"> {user && user?.displayName}</p>
+           <p className="font-semibold text-sm hidden md:block"> {user && user?.displayName}</p>
             <ReactTooltip id="user-tooltip" place="left" type="dark" effect="float" />
           </div>
         ) : null}

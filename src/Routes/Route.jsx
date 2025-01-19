@@ -6,6 +6,8 @@ import Home from "../Page/Home/Home/Home";
 import About from "../component/About";
 import LogIn from "../Page/LogIn";
 import Register from "../Page/Register";
+import Dashboard from "./Dashboard";
+import AddProperty from "../Page/Dashboard/Agent/AddProperty";
 
   const router = createBrowserRouter([
     {
@@ -19,6 +21,16 @@ import Register from "../Page/Register";
         {
           path: '/about',
           element: <About/>
+        }
+      ]
+    },
+    {
+      path: 'dashboard',
+      element: <Dashboard/>,
+      children:[
+        {
+          path: 'addProperty',
+          element: <AddProperty/>
         }
       ]
     },

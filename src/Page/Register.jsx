@@ -13,6 +13,7 @@ import { Helmet } from "react-helmet-async";
 const Register = () => {
   const { createUser, user, setUser, updateUserProfile } =
     useContext(AuthContext);
+  console.log("🚀 ~ Register ~ user:", user);
   const provider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const [error, setError] = useState({});
@@ -80,11 +81,12 @@ const Register = () => {
     if (hasError) return;
 
     createUser(email, password)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-        updateUserProfile({ displayName: name, photoURL: photo })
-          .then(() => {
+      .then(() => {
+        // const user = result.user;
+        updateUserProfile(name, photo)
+          .then((result) => {
+            console.log("🚀 ~ .then ~ result:", result)
+            setUser(result.user);
             toast.success("Registration successful!");
             navigate("/");
           })
@@ -142,6 +144,7 @@ const Register = () => {
                 required
               />
             </div>
+            
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Photo URL</span>
@@ -153,6 +156,7 @@ const Register = () => {
                 className="input input-bordered"
               />
             </div>
+
             <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Password</span>
