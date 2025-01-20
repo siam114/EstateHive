@@ -27,7 +27,7 @@ const AllProperties = () => {
           ))}
         </div>
       ) : (
-        <p>No Data Available</p>
+        <p className="text-3xl py-10 text-center">No Data Available</p>
       )}
     </>
   );

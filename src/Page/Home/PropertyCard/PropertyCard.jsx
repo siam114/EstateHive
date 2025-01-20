@@ -16,7 +16,7 @@ const PropertyCard = ({ property }) => {
   const navigate = useNavigate();
 
   const handleDetailsClick = () => {
-    navigate(`/property/${_id}`); // Redirect to Property Details page
+    navigate(`/property/${_id}`);  // Redirect to Property Details page
   };
 
   return (
@@ -52,7 +52,7 @@ const PropertyCard = ({ property }) => {
           verified ? "text-green-600" : "text-red-600"
         }`}
       >
-        {verified ? "Verified by Admin" : "Not Verified"}
+        {verified ? "Verified" : "Not Verified"}
       </p>
 
       {/* Price Range */}
