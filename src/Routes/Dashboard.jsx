@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { AiOutlineBars } from "react-icons/ai";
 import { Link, NavLink, Outlet } from "react-router-dom";
 
@@ -11,6 +12,9 @@ const Dashboard = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>EstateHive | Dashboard</title>
+      </Helmet>
       {/* Small Screen Navbar */}
       <div className="bg-gray-100 z-50 text-gray-800 flex justify-between md:hidden">
         <div>

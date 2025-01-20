@@ -8,6 +8,8 @@ import LogIn from "../Page/LogIn";
 import Register from "../Page/Register";
 import Dashboard from "./Dashboard";
 import AddProperty from "../Page/Dashboard/Agent/AddProperty";
+import AllProperties from "../component/AllProperties";
+import PropertyDetails from "../Page/Home/PropertyCard/PropertyDetails";
 
   const router = createBrowserRouter([
     {
@@ -21,6 +23,14 @@ import AddProperty from "../Page/Dashboard/Agent/AddProperty";
         {
           path: '/about',
           element: <About/>
+        },
+        {
+          path: '/allProperties',
+          element: <AllProperties/>
+        },
+        {
+          path: '/property/:id',
+          element: <PropertyDetails/>
         }
       ]
     },
