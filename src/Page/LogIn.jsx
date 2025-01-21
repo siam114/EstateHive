@@ -9,6 +9,7 @@ import auth from "../firebase/firebase.init";
 import { toast, ToastContainer } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import { getDBUser } from "../api/utils";
 
 const LogIn = () => {
   const { signInUser, setUser, user } = useContext(AuthContext);
@@ -26,8 +27,8 @@ const LogIn = () => {
     console.log(email, password);
 
     signInUser(email, password)
-      .then((result) => {
-        const user = result.user;
+      .then(() => {
+        const user =  getDBUser(email)
         toast.success("Login successful!");
         setUser(user);
         navigate(location?.state ? location.state : "/");
@@ -42,7 +43,7 @@ const LogIn = () => {
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        const user = result.user;
+        const user =  getDBUser(result.email)
         setUser(user);
         toast.success("Google sign-in successful!");
         navigate("/");

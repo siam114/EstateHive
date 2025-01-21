@@ -18,14 +18,33 @@ export const saveUser = async(user) =>{
         email: user?.email,
         role: 'USER'
         })
-        if(!res){
+        console.log("🚀 ~ saveUser ~ res.data:", res.data)
+        if(!res.data){
             toast.error('Already Exist')
-            return
+            return null
         }
-        const {token, ...userInfo}= res
+        const {token, ...userInfo}= res.data
         localStorage.setItem('access-token',token)
         localStorage.setItem('userInfo',JSON.stringify(userInfo))
+        return userInfo
    }catch(err){
       toast.error(err.message)
    }
 }
+
+export const getDBUser = async(email) =>{
+    try{
+     const res = await axios.post(`/user/${email}`)
+         console.log("🚀 ~ saveUser ~ res.data:", res.data)
+         if(!res.data){
+             toast.error('Already Exist')
+             return null
+         }
+         const {token, ...userInfo}= res.data
+         localStorage.setItem('access-token',token)
+         localStorage.setItem('userInfo',JSON.stringify(userInfo))
+         return userInfo
+    }catch(err){
+       toast.error(err.message)
+    }
+ }

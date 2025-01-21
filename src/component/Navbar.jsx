@@ -10,6 +10,7 @@ import logo from '/logo.jpg'
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  console.log("🚀 ~ Navbar ~ user:", user)
   const links = (
     <div className=" flex flex-col md:flex-row gap-2 md:gap-5 font-semibold">
       <NavLink to="/">Home</NavLink>
@@ -69,13 +70,14 @@ const Navbar = () => {
           <div className="flex flex-col items-center">
             <img
              data-tooltip-id="user-tooltip"
-             data-tooltip-content={user?.displayName || "No username available"}
+             data-tooltip-content={user?.name || "No username available"}
               className="w-8 h-8 rounded-full"
               referrerPolicy='no-referrer'
-              src={user?.photoURL}
+              src={ user?.image ?? ''}
               alt=''
+              loading="lazy"
             />
-           <p className="font-semibold text-sm hidden md:block"> {user && user?.displayName}</p>
+           <p className="font-semibold text-sm hidden md:block"> {user && user?.name}</p>
             <ReactTooltip id="user-tooltip" place="left" type="dark" effect="float" />
           </div>
         ) : null}

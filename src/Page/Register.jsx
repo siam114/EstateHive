@@ -10,7 +10,7 @@ import { Helmet } from "react-helmet-async";
 import { saveUser } from "../api/utils";
 
 const Register = () => {
-  const { createUser, user, signInWithGoogle, updateUserProfile } =
+  const { createUser, user,setUser, signInWithGoogle, updateUserProfile } =
     useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState({});
@@ -23,7 +23,9 @@ const Register = () => {
       const result = await signInWithGoogle();
 
       // Save user info in database
-      await saveUser(result?.user);
+      const user = await saveUser(result?.user);
+      console.log("🚀 ~ handleGoogleSignIn ~ user:", user)
+      setUser(user)
 
       navigate("/");
       toast.success("Signup Successful");
@@ -91,7 +93,8 @@ const Register = () => {
       await updateUserProfile(name, photo);
 
       // Save user info in database
-      await saveUser({ ...result?.user, displayName: name, photoURL: photo });
+      const user = await saveUser({ ...result?.user, displayName: name, photoURL: photo });
+      setUser(user)
 
       toast.success("Signup Successful");
       navigate("/");
