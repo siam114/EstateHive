@@ -5,50 +5,53 @@ import registerLottieData from "../assets/lottie/Animation - 1734851473080.json"
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import auth from "../firebase/firebase.init";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import { saveUser } from "../api/utils";
 
 const Register = () => {
-  const { createUser, user, setUser, updateUserProfile } =
+  const { createUser, user, signInWithGoogle, updateUserProfile } =
     useContext(AuthContext);
-  console.log("🚀 ~ Register ~ user:", user);
-  const provider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const [error, setError] = useState({});
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleGoogleSignIn = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-        toast.success("Google sign-in successful!");
-        navigate("/");
-      })
-      .catch((error) => {
-        toast.error("Google sign-in failed! Please try again.");
-        console.log(error);
-      });
+  // Google Sign-In Handler
+  const handleGoogleSignIn = async () => {
+    try {
+      // User Registration using Google
+      const result = await signInWithGoogle();
+
+      // Save user info in database
+      await saveUser(result?.user);
+
+      navigate("/");
+      toast.success("Signup Successful");
+    } catch (err) {
+      console.error(err);
+      toast.error("Google Sign-In Failed: " + err.message);
+    }
   };
 
+  // Redirect user if already logged in
   useEffect(() => {
-    if (!!user && typeof window !== "undefined") {
-      window.location.replace("/");
+    if (user) {
+      navigate("/");
     }
-  }, [user]);
+  }, [user, navigate]);
 
-  const handleRegister = (e) => {
+  // Form Submission Handler
+  const handleRegister = async (e) => {
     e.preventDefault();
-    let hasError = false;
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
 
-    // Validation Logic
+    let hasError = false;
+
+    // Validation
     if (name.length < 4) {
       setError((prev) => ({
         ...prev,
@@ -80,27 +83,24 @@ const Register = () => {
 
     if (hasError) return;
 
-    createUser(email, password)
-      .then(() => {
-        // const user = result.user;
-        updateUserProfile(name, photo)
-          .then((result) => {
-            console.log("🚀 ~ .then ~ result:", result)
-            setUser(result.user);
-            toast.success("Registration successful!");
-            navigate("/");
-          })
-          .catch((error) => {
-            toast.error("Profile update failed. Please try again.");
-            console.log(error);
-          });
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        toast.error(`Registration failed: ${errorMessage}`);
-        console.log(errorMessage);
-      });
+    try {
+      // Register user with email and password
+      const result = await createUser(email, password);
+
+      // Update profile with name and photo
+      await updateUserProfile(name, photo);
+
+      // Save user info in database
+      await saveUser({ ...result?.user, displayName: name, photoURL: photo });
+
+      toast.success("Signup Successful");
+      navigate("/");
+    } catch (err) {
+      console.error(err);
+      toast.error("Registration Failed: " + err.message);
+    }
   };
+
   return (
     <>
       <Helmet>
@@ -144,7 +144,7 @@ const Register = () => {
                 required
               />
             </div>
-            
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Photo URL</span>
@@ -169,6 +169,7 @@ const Register = () => {
                 required
               />
               <button
+                type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 className="btn btn-xs absolute right-4 top-12"
               >
@@ -199,7 +200,7 @@ const Register = () => {
               className="btn border border-black"
             >
               <span className="text-2xl">
-                <FcGoogle />{" "}
+                <FcGoogle />
               </span>{" "}
               Login with Google
             </button>

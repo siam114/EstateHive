@@ -10,6 +10,7 @@ import Dashboard from "./Dashboard";
 import AddProperty from "../Page/Dashboard/Agent/AddProperty";
 import AllProperties from "../component/AllProperties";
 import PropertyDetails from "../Page/Home/PropertyCard/PropertyDetails";
+import PrivateRoute from "./PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -36,7 +37,7 @@ import PropertyDetails from "../Page/Home/PropertyCard/PropertyDetails";
     },
     {
       path: 'dashboard',
-      element: <Dashboard/>,
+      element: <PrivateRoute><Dashboard/></PrivateRoute>,
       children:[
         {
           path: 'addProperty',

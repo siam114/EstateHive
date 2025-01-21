@@ -69,17 +69,7 @@ const PropertyDetails = () => {
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">Reviews</h2>
         <div className="space-y-4">
-          {property.reviews?.length > 0 ? (
-            property.reviews.map((review) => (
-              <div key={review.id} className="bg-gray-100 p-4 rounded-md shadow">
-                <p>
-                  <strong>{review.user}</strong>: {review.comment}
-                </p>
-              </div>
-            ))
-          ) : (
             <p className="text-gray-600">No reviews yet.</p>
-          )}
         </div>
 
         {/* Add Review Button */}

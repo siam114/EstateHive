@@ -21,7 +21,7 @@ const AllProperties = () => {
         <title>EstateHive | All Properties</title>
       </Helmet>
       {properties && properties.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 container mx-auto py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 container mx-auto py-10 px-5">
           {properties.map((property) => (
             <PropertyCard key={property._id} property={property} />
           ))}

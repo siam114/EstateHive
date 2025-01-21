@@ -61,6 +61,15 @@ const Dashboard = () => {
             <li>
               <NavLink to="/dashboard/request">Requested properties</NavLink>
             </li>
+
+            <div className=""><hr /></div>
+
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/allProperties">All Properties</NavLink>
+            </li>
           </ul>
         </div>
       </div>
