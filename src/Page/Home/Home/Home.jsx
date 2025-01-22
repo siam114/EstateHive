@@ -1,6 +1,7 @@
 import BannerSlider from "../../../component/BannerSlider";
 import FeaturedProperties from "../../../component/FeaturedProperties";
 import { Helmet } from 'react-helmet-async';
+import Review from "../Review/Review";
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             
             <BannerSlider/>
             <FeaturedProperties/>
+            <Review/>
         </div>
     );
 };
