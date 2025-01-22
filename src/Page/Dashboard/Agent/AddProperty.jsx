@@ -26,11 +26,7 @@ const AddProperty = () => {
     console.log(name, description, min_price, max_price, location, imageUrl);
 
     //agent info
-    const agent = {
-      name: user?.displayName,
-      image: user?.photoURL,
-      email: user?.email,
-    };
+    const agent_id = user._id
 
     //create property data object
     const propertyData = {
@@ -40,7 +36,7 @@ const AddProperty = () => {
       max_price,
       location,
       image: imageUrl,
-      agent,
+      agent_id,
     };
 
     //save property in db
