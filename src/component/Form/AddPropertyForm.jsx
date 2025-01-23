@@ -6,6 +6,7 @@ import { shortImageName } from "../../utilitis";
 const AddPropertyForm = ({ handleSubmit,loading,uploadImage,setUploadImage }) => {
   return (
     <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
+       <h2 className="py-10 text-4xl font-bold">Add Property</h2>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="space-y-4">

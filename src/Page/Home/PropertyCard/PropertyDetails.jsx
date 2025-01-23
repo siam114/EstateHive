@@ -104,7 +104,6 @@ const PropertyDetails = () => {
 
           {/* Add to Wishlist Button */}
           <button
-            onClick={() => addToWishlist(property)}
             className="bg-[#363e94] text-white px-4 py-2 rounded-md shadow hover:bg-[#363e94cb]"
           >
             Add to Wishlist
@@ -151,11 +150,6 @@ const PropertyDetails = () => {
       />
     </div>
   );
-
-  function addToWishlist(property) {
-    // Add property to the wishlist and save to database
-    console.log("Added to wishlist:", property);
-  }
 };
 
 export default PropertyDetails;

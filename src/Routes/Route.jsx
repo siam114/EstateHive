@@ -11,6 +11,7 @@ import AddProperty from "../Page/Dashboard/Agent/AddProperty";
 import AllProperties from "../component/AllProperties";
 import PropertyDetails from "../Page/Home/PropertyCard/PropertyDetails";
 import PrivateRoute from "./PrivateRoute";
+import ManageUsers from "../Page/Dashboard/Admin/ManageUsers";
 
   const router = createBrowserRouter([
     {
@@ -42,6 +43,12 @@ import PrivateRoute from "./PrivateRoute";
         {
           path: 'addProperty',
           element: <AddProperty/>
+        },
+        
+        //admin routes
+        {
+          path: 'manageUsers',
+          element: <ManageUsers/>
         }
       ]
     },

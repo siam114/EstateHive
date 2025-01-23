@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-boolean-cast */
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
@@ -70,6 +71,14 @@ const AuthProvider = ({ children }) => {
     const initAuth = onAuthStateChanged(auth, (currentUser) => {
       if (user) {
         return;
+      }
+      setLoading(true)
+      const userString = localStorage.getItem('userInfo')
+      if(!!userString){
+         const userInfo = JSON.parse(userString)
+         setUser(userInfo)
+         setLoading(false)
+         return
       }
       console.log("state capture", currentUser);
       if (currentUser) {
