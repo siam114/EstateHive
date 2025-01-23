@@ -2,17 +2,17 @@ import Lottie from "lottie-react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginLottieData from "../assets/lottie/login.json";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../context/AuthProvider";
+import {  useEffect, useState } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import auth from "../firebase/firebase.init";
 import { toast, ToastContainer } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import { getDBUser } from "../api/utils";
+import { useAuth } from "../hook/useAuth";
 
 const LogIn = () => {
-  const { signInUser, setUser, user } = useContext(AuthContext);
+  const { signInUser, setUser, user } = useAuth();
   const navigate = useNavigate();
   const [error, setError] = useState({});
   const location = useLocation();

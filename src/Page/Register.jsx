@@ -2,16 +2,16 @@ import Lottie from "lottie-react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import registerLottieData from "../assets/lottie/Animation - 1734851473080.json";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../context/AuthProvider";
+import {  useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import { saveUser } from "../api/utils";
+import { useAuth } from "../hook/useAuth";
 
 const Register = () => {
-  const { createUser, user,setUser, signInWithGoogle, updateUserProfile } =
-    useContext(AuthContext);
+  const { createUser, user, setUser, signInWithGoogle, updateUserProfile } =
+  useAuth();
   const navigate = useNavigate();
   const [error, setError] = useState({});
   const [showPassword, setShowPassword] = useState(false);
@@ -24,14 +24,14 @@ const Register = () => {
 
       // Save user info in database
       const user = await saveUser(result?.user);
-      console.log("🚀 ~ handleGoogleSignIn ~ user:", user)
-      setUser(user)
+      console.log("🚀 ~ handleGoogleSignIn ~ user:", user);
+      setUser(user);
 
       navigate("/");
       toast.success("Signup Successful");
     } catch (err) {
       console.error(err);
-      toast.error("Google Sign-In Failed: " + err.message);
+      toast.error("Google Sign-In Failed: " + err.response.data.message);
     }
   };
 
@@ -93,14 +93,18 @@ const Register = () => {
       await updateUserProfile(name, photo);
 
       // Save user info in database
-      const user = await saveUser({ ...result?.user, displayName: name, photoURL: photo });
-      setUser(user)
+      const user = await saveUser({
+        ...result?.user,
+        displayName: name,
+        photoURL: photo,
+      });
+      setUser(user);
 
       toast.success("Signup Successful");
       navigate("/");
     } catch (err) {
       console.error(err);
-      toast.error("Registration Failed: " + err.message);
+      toast.error("Registration Failed: " + err.response.data.message);
     }
   };
 

@@ -2,13 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Loading from "../../Loading";
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import ReviewModal from "../../../component/Modal/ReviewModal";
-import { AuthContext } from "../../../context/AuthProvider";
+import { useAuth } from "../../../hook/useAuth";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
+import toast from "react-hot-toast";
+import isSuccessful from './../../../helper/status';
 
 const PropertyDetails = () => {
   const { id } = useParams();
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure()
   const [showReviewModal, setShowReviewModal] = useState(false);
   const handleOpenModal = () => setShowReviewModal(true);
   const handleCloseModal = () => setShowReviewModal(false);
@@ -33,6 +37,20 @@ const PropertyDetails = () => {
     }
   };
 
+  const handleWishlist = async() =>{
+    try{
+       const {data, status} = await axiosSecure.post('/wishlist', {property_id: id}) 
+       console.log("🚀 ~ handleWishlist ~ data:", data)
+       if(isSuccessful(status)){
+        toast.success('Property Successfully Added to Wishlist')
+       }else{
+        toast.error('Unable to add property to wishlish')
+       }  
+    }catch(err){
+      toast.error(err.response.data.message)
+    }
+  }
+
   const { data: property = {}, isLoading } = useQuery({
     queryKey: ["property", id],
     queryFn: async () => {
@@ -49,6 +67,7 @@ const PropertyDetails = () => {
       const { data } = await axios(
         `${import.meta.env.VITE_API_URL}/reviews/${id}`
       );
+
       return data;
     },
   });
@@ -104,6 +123,7 @@ const PropertyDetails = () => {
 
           {/* Add to Wishlist Button */}
           <button
+          onClick={handleWishlist}
             className="bg-[#363e94] text-white px-4 py-2 rounded-md shadow hover:bg-[#363e94cb]"
           >
             Add to Wishlist

@@ -2,10 +2,15 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { AiOutlineBars } from "react-icons/ai";
 import { Link, NavLink, Outlet } from "react-router-dom";
+// import useAdmin from "../hook/useAdmin";
+import { useAuth } from './../hook/useAuth';
 
 const Dashboard = () => {
   const [isActive, setActive] = useState(false);
-  const isAdmin = true;
+  const {user} = useAuth()
+  const isAdmin = user?.role === 'ADMIN'
+  const isAgent = user?.role === 'AGENT'
+  // const isUser = user?.role === 'USER'
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -56,7 +61,7 @@ const Dashboard = () => {
                   <li>
                     <NavLink
                       className="block py-2 hover:bg-[#4a56b5] rounded-md"
-                      to="/dashboard/adminProfile"
+                      to="/dashboard"
                     >
                       Admin Profile
                     </NavLink>
@@ -86,12 +91,12 @@ const Dashboard = () => {
                     </NavLink>
                   </li>
                 </>
-              ) : (
+              ) : isAgent ?  (
                 <>
                   <li>
                     <NavLink
                       className="block py-2 hover:bg-[#4a56b5] rounded-md"
-                      to="/dashboard/agentProfile"
+                      to="/dashboard"
                     >
                       Agent Profile
                     </NavLink>
@@ -129,7 +134,17 @@ const Dashboard = () => {
                     </NavLink>
                   </li>
                 </>
-              )}
+              ) : 
+              (<>
+                     <li>
+                    <NavLink
+                      className="block py-2 hover:bg-[#4a56b5] rounded-md"
+                      to="/dashboard"
+                    >
+                      My Profile
+                    </NavLink>
+                  </li>
+              </>)}
 
               <div className="w-full px-4">
                 <hr className="border-gray-400" />

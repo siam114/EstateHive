@@ -12,6 +12,9 @@ import AllProperties from "../component/AllProperties";
 import PropertyDetails from "../Page/Home/PropertyCard/PropertyDetails";
 import PrivateRoute from "./PrivateRoute";
 import ManageUsers from "../Page/Dashboard/Admin/ManageUsers";
+import ManageProperties from './../Page/Dashboard/Admin/ManageProperties';
+import ManageReviews from './../Page/Dashboard/Admin/ManageReviews';
+import Profile from "../Page/Dashboard/Admin/Profile";
 
   const router = createBrowserRouter([
     {
@@ -41,14 +44,27 @@ import ManageUsers from "../Page/Dashboard/Admin/ManageUsers";
       element: <PrivateRoute><Dashboard/></PrivateRoute>,
       children:[
         {
+          index: true,
+          element: <Profile/>
+       },
+        {
           path: 'addProperty',
           element: <AddProperty/>
         },
         
         //admin routes
+       
         {
           path: 'manageUsers',
           element: <ManageUsers/>
+        },
+        {
+          path: 'manageProperties',
+          element: <ManageProperties/>
+        },
+        {
+          path: 'manageReviews',
+          element: <ManageReviews/>
         }
       ]
     },

@@ -1,15 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
-import {  useContext,useState } from "react";
+import {  useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoMdMenu } from "react-icons/io";
-import { AuthContext } from "../context/AuthProvider";
+
 import { Tooltip as ReactTooltip } from 'react-tooltip';
 import logo from '/logo.jpg'
+import { useAuth } from "../hook/useAuth";
 
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
   console.log("🚀 ~ Navbar ~ user:", user)
   const links = (
     <div className=" flex flex-col md:flex-row gap-2 md:gap-5 font-semibold">

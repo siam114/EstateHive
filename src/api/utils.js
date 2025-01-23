@@ -28,7 +28,8 @@ export const saveUser = async(user) =>{
         localStorage.setItem('userInfo',JSON.stringify(userInfo))
         return userInfo
    }catch(err){
-      toast.error(err.message)
+      console.log("🚀 ~ saveUser ~ err:", err)
+      toast.error(err.response.data.message)
    }
 }
 
@@ -45,6 +46,6 @@ export const getDBUser = async(email) =>{
          localStorage.setItem('userInfo',JSON.stringify(userInfo))
          return userInfo
     }catch(err){
-       toast.error(err.message)
+       toast.error(err.response.data.message)
     }
  }

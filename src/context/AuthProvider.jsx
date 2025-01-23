@@ -41,6 +41,8 @@ const AuthProvider = ({ children }) => {
   const logOut = async() => {
     setLoading(true);
     await signOut(auth);
+    localStorage.removeItem('access-token')
+    localStorage.removeItem('userInfo')
     setUser(null)
   };
 
@@ -105,7 +107,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       return initAuth();
     };
-  }, [user]);
+  }, []);
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

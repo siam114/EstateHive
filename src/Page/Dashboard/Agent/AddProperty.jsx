@@ -1,15 +1,15 @@
 import { Helmet } from "react-helmet-async";
 import AddPropertyForm from "./../../../component/Form/AddPropertyForm";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { imageUpload } from "../../../api/utils";
-import { AuthContext } from "../../../context/AuthProvider";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import toast from "react-hot-toast";
+import { useAuth } from "../../../hook/useAuth";
 
 const AddProperty = () => {
   const [loading, setLoading] = useState(false);
   const [uploadImage, setUploadImage] = useState({name: 'Choose Image'});
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
   const axiosSecure = useAxiosSecure()
   //handle form submit
   const handleSubmit = async (e) => {
