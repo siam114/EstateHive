@@ -59,12 +59,12 @@ const Dashboard = () => {
               {isAdmin ? (
                 <>
                   <li>
-                    <NavLink
+                    <Link
                       className="block py-2 hover:bg-[#4a56b5] rounded-md"
                       to="/dashboard"
                     >
                       Admin Profile
-                    </NavLink>
+                    </Link>
                   </li>
                   <li>
                     <NavLink
@@ -94,12 +94,12 @@ const Dashboard = () => {
               ) : isAgent ?  (
                 <>
                   <li>
-                    <NavLink
+                    <Link
                       className="block py-2 hover:bg-[#4a56b5] rounded-md"
                       to="/dashboard"
                     >
                       Agent Profile
-                    </NavLink>
+                    </Link>
                   </li>
                   <li>
                     <NavLink
@@ -137,12 +137,12 @@ const Dashboard = () => {
               ) : 
               (<>
                      <li>
-                    <NavLink
+                    <Link
                       className="block py-2 hover:bg-[#4a56b5] rounded-md"
                       to="/dashboard"
                     >
                       My Profile
-                    </NavLink>
+                    </Link>
                   </li>
               </>)}
 
