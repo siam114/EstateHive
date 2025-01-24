@@ -15,6 +15,9 @@ import ManageUsers from "../Page/Dashboard/Admin/ManageUsers";
 import ManageProperties from './../Page/Dashboard/Admin/ManageProperties';
 import ManageReviews from './../Page/Dashboard/Admin/ManageReviews';
 import Profile from "../Page/Dashboard/Admin/Profile";
+import MyReviews from "../Page/Dashboard/Users/MyReviews";
+import Wishlist from "../Page/Dashboard/Users/Wishlist";
+import PropertyBought from "../Page/Dashboard/Users/PropertyBought";
 
   const router = createBrowserRouter([
     {
@@ -46,6 +49,18 @@ import Profile from "../Page/Dashboard/Admin/Profile";
         {
           index: true,
           element: <Profile/>
+       },
+       {
+        path: 'reviews',
+        element: <MyReviews/>
+       },
+       {
+        path: 'wishlist',
+        element: <Wishlist/>
+       },
+       {
+        path: 'propertyBought',
+        element: <PropertyBought/>
        },
         {
           path: 'addProperty',

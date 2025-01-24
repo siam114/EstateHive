@@ -144,6 +144,30 @@ const Dashboard = () => {
                       My Profile
                     </Link>
                   </li>
+                  <li>
+                    <NavLink
+                      className="block py-2 hover:bg-[#4a56b5] rounded-md"
+                      to="/dashboard/wishlist"
+                    >
+                      Wishlist
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="block py-2 hover:bg-[#4a56b5] rounded-md"
+                      to="/dashboard/propertyBought"
+                    >
+                      Property Bought
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="block py-2 hover:bg-[#4a56b5] rounded-md"
+                      to="/dashboard/reviews"
+                    >
+                      My Reviews
+                    </NavLink>
+                  </li>
               </>)}
 
               <div className="w-full px-4">
