@@ -1,18 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Loading";
-import axios from "axios";
 import MyPropertyCard from "./MyPropertyCard";
 import { useAuth } from "../../../hook/useAuth";
+import useAxiosSecure from './../../../hook/useAxiosSecure';
 
 const MyAddedProperty = () => {
+  const axioSecure = useAxiosSecure()
     const {user} = useAuth()
     console.log(user)
     const { data: properties, isLoading } = useQuery({
-        queryKey: ["properties"],
+        queryKey: ["user-properties"],
         queryFn: async () => {
-          const { data } = await axios.get(
-            `${import.meta.env.VITE_API_URL}/properties`
+          const { data } = await axioSecure.get(
+            `/user-properties`
           );
+
           return data;
         },
       });

@@ -19,6 +19,9 @@ import MyReviews from "../Page/Dashboard/Users/MyReviews";
 import Wishlist from "../Page/Dashboard/Users/Wishlist";
 import PropertyBought from "../Page/Dashboard/Users/PropertyBought";
 import MyAddedProperty from "../Page/Dashboard/Agent/MyAddedProperty";
+import MakeOffer from "../Page/Dashboard/Users/MakeOffer";
+import MySoldProperty from "../Page/Dashboard/Agent/MySoldProperty";
+import RequestProperty from "../Page/Dashboard/Agent/RequestProperty";
 
   const router = createBrowserRouter([
     {
@@ -39,8 +42,12 @@ import MyAddedProperty from "../Page/Dashboard/Agent/MyAddedProperty";
         },
         {
           path: '/property/:id',
-          element: <PropertyDetails/>
-        }
+          element: <PrivateRoute><PropertyDetails/></PrivateRoute>
+        },
+        {
+          path:'/property/:id/make_offer',
+          element: <MakeOffer/>
+         },
       ]
     },
     {
@@ -59,6 +66,7 @@ import MyAddedProperty from "../Page/Dashboard/Agent/MyAddedProperty";
         path: 'wishlist',
         element: <Wishlist/>
        },
+     
        {
         path: 'propertyBought',
         element: <PropertyBought/>
@@ -71,6 +79,14 @@ import MyAddedProperty from "../Page/Dashboard/Agent/MyAddedProperty";
         {
           path: 'myAdded',
           element: <MyAddedProperty/>
+        },
+        {
+          path:'mySold',
+          element: <MySoldProperty/>
+        },
+        {
+          path: 'request',
+          element: <RequestProperty/>
         },
         
         //admin routes

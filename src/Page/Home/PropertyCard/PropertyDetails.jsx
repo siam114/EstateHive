@@ -16,24 +16,28 @@ const PropertyDetails = () => {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const handleOpenModal = () => setShowReviewModal(true);
   const handleCloseModal = () => setShowReviewModal(false);
+  
 
   const handleSubmitReview = async (review) => {
     try {
       console.log("Submitted Review:", review);
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/add-review`,
+      const res = await axiosSecure.post(
+        `/add-review`,
         { user_id: user._id, property_id: id, review }
       );
 
-      if (res.data.success) {
-        console.log("Review added successfully:", res.data);
+      if (isSuccessful(res.status)) {
+        // console.log("Review added successfully:", res.data);
+        toast.success('Review added successfully')
+        refetch()
       } else {
-        console.error("Failed to add review:", res.data.message);
+        toast.error("Failed to add review")
       }
-      refetch()
+      
       handleCloseModal();
     } catch (error) {
       console.error("Error submitting review:", error.message);
+      toast.error("Failed to add review")
     }
   };
 

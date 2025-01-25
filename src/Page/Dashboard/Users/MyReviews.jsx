@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import Swal from "sweetalert2";
 import Loading from "../../Loading";
+import isSuccessful from "../../../helper/status";
 
 const MyReviews = () => {
   const { user } = useAuth();
@@ -33,9 +34,10 @@ const MyReviews = () => {
         }).then((result) => {
          if(result.isConfirmed) {
            axiosSecure.delete(`/delete-review/${id}`)
-           .then(async(res) => {
-             if(res.data.deletedCount > 0) {
-                await refetch();
+           .then((res) => {
+             console.log("🚀 ~ .then ~ res:", res)
+             if(isSuccessful(res.status)) {
+                refetch();
                  Swal.fire({
                    title: "Deleted!",
                    text: "User has been deleted",

@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Loading from "../../Loading";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
 
 const Review = () => {
+  const axiosSecure = useAxiosSecure();
   // Initialize AOS for animations
   useEffect(() => {
     AOS.init();
@@ -15,7 +16,7 @@ const Review = () => {
   const { data: reviews = [], isLoading, isError } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/reviews`);
+      const { data } = await axiosSecure.get(`/reviews`);
       return data.map((review) => ({
         id: review._id,
         name: review.user.name,
