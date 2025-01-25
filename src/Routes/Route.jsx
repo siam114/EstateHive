@@ -18,6 +18,7 @@ import Profile from "../Page/Dashboard/Admin/Profile";
 import MyReviews from "../Page/Dashboard/Users/MyReviews";
 import Wishlist from "../Page/Dashboard/Users/Wishlist";
 import PropertyBought from "../Page/Dashboard/Users/PropertyBought";
+import MyAddedProperty from "../Page/Dashboard/Agent/MyAddedProperty";
 
   const router = createBrowserRouter([
     {
@@ -62,9 +63,14 @@ import PropertyBought from "../Page/Dashboard/Users/PropertyBought";
         path: 'propertyBought',
         element: <PropertyBought/>
        },
+       //agent
         {
           path: 'addProperty',
           element: <AddProperty/>
+        },
+        {
+          path: 'myAdded',
+          element: <MyAddedProperty/>
         },
         
         //admin routes
