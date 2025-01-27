@@ -33,7 +33,9 @@ const Home = () => {
       </div>
       <FeaturedProperties />
       <Review />
+      <div className="container mx-auto my-10">
       <Faq/>
+      </div>
     </div>
   );
 };
