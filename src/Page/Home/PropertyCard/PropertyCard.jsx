@@ -10,7 +10,7 @@ const PropertyCard = ({ property }) => {
     location,
     image,
     agent,
-    verified,
+    status,
   } = property;
 
   const navigate = useNavigate();
@@ -49,10 +49,10 @@ const PropertyCard = ({ property }) => {
       {/* Verification Status */}
       <p
         className={`text-sm font-medium mb-2 ${
-          verified ? "text-green-600" : "text-red-600"
+          status == 'VERIFIED' ? "text-green-600" : "text-red-600"
         }`}
       >
-        {verified ? "Verified" : "Not Verified"}
+        {status == 'VERIFIED' ? "Verified" : "Not Verified"}
       </p>
 
       {/* Price Range */}

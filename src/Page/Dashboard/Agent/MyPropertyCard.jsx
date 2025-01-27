@@ -1,7 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useNavigate } from "react-router-dom";
+
+import { useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
 
 const MyPropertyCard = ({ property }) => {
+  const axiosSecure = useAxiosSecure();
+  const queryClient = useQueryClient();
   const {
     _id,
     name,
@@ -10,20 +16,20 @@ const MyPropertyCard = ({ property }) => {
     location,
     image,
     agent,
-    verified,
+    status
   } = property;
 
-  const navigate = useNavigate();
 
-  const handleUpdate = () => {
-    // Redirect to the update page
-    navigate(`/`);
-  };
-
-  const handleDelete = () => {
-    // Implement delete logic here
-    // For example, make an API request to delete the property
-    console.log("Delete property:", _id);
+  const handleDelete = async() => {
+    try {
+      //post req
+      await axiosSecure.delete(`/properties/${_id}`);
+      toast.success("Property delete Successfully!");
+      await queryClient.resetQueries({ queryKey: ["properties"], exact: false });
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response.data.message);
+    }
   };
 
   return (
@@ -56,10 +62,10 @@ const MyPropertyCard = ({ property }) => {
       {/* Verification Status */}
       <p
         className={`text-sm font-medium mb-2 ${
-          verified ? "text-green-600" : "text-red-600"
+          status == 'VERIFIED' ? "text-green-600" : "text-red-600"
         }`}
       >
-        {verified ? "Verified" : "Not Verified"}
+        {status == 'VERIFIED' ? "Verified" : "Not Verified"}
       </p>
 
       {/* Price Range */}
@@ -69,15 +75,16 @@ const MyPropertyCard = ({ property }) => {
 
       {/* Update and Delete Buttons */}
       <div className="flex gap-4 mt-4">
-        <button
-          onClick={handleUpdate}
+      <Link to={`/dashboard/update/${_id}`}>
+      <button
           className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition w-full"
         >
           Update
         </button>
+      </Link>
         <button
           onClick={handleDelete}
-          className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition w-full"
+          className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition"
         >
           Delete
         </button>

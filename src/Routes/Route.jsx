@@ -22,6 +22,9 @@ import MyAddedProperty from "../Page/Dashboard/Agent/MyAddedProperty";
 import MakeOffer from "../Page/Dashboard/Users/MakeOffer";
 import MySoldProperty from "../Page/Dashboard/Agent/MySoldProperty";
 import RequestProperty from "../Page/Dashboard/Agent/RequestProperty";
+import UpdateCard from "../Page/Dashboard/Agent/UpdateCard";
+import AdminRoute from "./AdminRoute";
+import VerifiedProperties from "../Page/Dashboard/Admin/VerifiedProperties";
 
   const router = createBrowserRouter([
     {
@@ -44,10 +47,8 @@ import RequestProperty from "../Page/Dashboard/Agent/RequestProperty";
           path: '/property/:id',
           element: <PrivateRoute><PropertyDetails/></PrivateRoute>
         },
-        {
-          path:'/property/:id/make_offer',
-          element: <MakeOffer/>
-         },
+      
+       
       ]
     },
     {
@@ -65,6 +66,10 @@ import RequestProperty from "../Page/Dashboard/Agent/RequestProperty";
        {
         path: 'wishlist',
         element: <Wishlist/>
+       },
+       {
+        path:'property/:id/make_offer',
+        element: <MakeOffer/>
        },
      
        {
@@ -88,12 +93,18 @@ import RequestProperty from "../Page/Dashboard/Agent/RequestProperty";
           path: 'request',
           element: <RequestProperty/>
         },
+        {
+          path: 'update/:id',
+          element: <UpdateCard/>,
+          loader: ({params}) => fetch(`http://localhost:5000/properties/${params.id}`)
+         },
         
         //admin routes
        
         {
           path: 'manageUsers',
-          element: <ManageUsers/>
+          element:
+            <AdminRoute><ManageUsers/></AdminRoute>
         },
         {
           path: 'manageProperties',
@@ -102,7 +113,12 @@ import RequestProperty from "../Page/Dashboard/Agent/RequestProperty";
         {
           path: 'manageReviews',
           element: <ManageReviews/>
+        },
+        {
+          path: 'advertisement',
+          element: <VerifiedProperties/>
         }
+        
       ]
     },
     {

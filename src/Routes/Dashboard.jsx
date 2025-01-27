@@ -69,6 +69,14 @@ const Dashboard = () => {
                   <li>
                     <NavLink
                       className="block py-2 hover:bg-[#4a56b5] rounded-md"
+                      to="/dashboard/advertisement"
+                    >
+                      Advertisement
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="block py-2 hover:bg-[#4a56b5] rounded-md"
                       to="/dashboard/manageProperties"
                     >
                       Manage Properties
@@ -90,6 +98,7 @@ const Dashboard = () => {
                       Manage Reviews
                     </NavLink>
                   </li>
+
                 </>
               ) : isAgent ?  (
                 <>

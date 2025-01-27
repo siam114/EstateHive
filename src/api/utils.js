@@ -35,7 +35,7 @@ export const saveUser = async(user) =>{
 
 export const getDBUser = async(email) =>{
     try{
-     const res = await axios.post(`/user/${email}`)
+     const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/${email}`)
          console.log("🚀 ~ saveUser ~ res.data:", res.data)
          if(!res.data){
              toast.error('Already Exist')
@@ -47,5 +47,7 @@ export const getDBUser = async(email) =>{
          return userInfo
     }catch(err){
        toast.error(err.response.data.message)
+       return null
+    //    throw new Error('error')
     }
  }

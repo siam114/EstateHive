@@ -6,7 +6,7 @@ import Loading from "../../Loading";
 const ManageReviews = () => {
     const axiosSecure = useAxiosSecure();
   const fetchReviews = async () => {
-    const res = await axiosSecure.get("/reviews"); 
+    const res = await axiosSecure.get("/all-reviews"); 
     return res.data;
   };
 
@@ -14,6 +14,7 @@ const ManageReviews = () => {
   const { data: reviews = [], isLoading, isError, refetch } = useQuery({
     queryKey: ["reviews"],
     queryFn: fetchReviews,
+    retry:false
   });
 
   // Handle review delete
@@ -47,17 +48,17 @@ const ManageReviews = () => {
           >
             <div className="flex items-center gap-3">
               <img
-                src={review.user.image}
-                alt={review.user.name}
+                src={review.user?.image}
+                alt={review.user?.name}
                 className="w-12 h-12 rounded-full object-cover"
               />
               <div>
-                <p className="font-semibold">{review.user.name}</p>
-                <p className="text-sm text-gray-500">{review.user._id}</p>
+                <p className="font-semibold">{review?.user?.name}</p>
+                <p className="text-sm text-gray-500">{review?.user._id}</p>
               </div>
             </div>
-            <p className="mt-2 text-gray-700">{review.review}</p>
-            <p className="text-xs text-gray-400">Property: {review.property.name}</p>
+            <p className="mt-2 text-gray-700">{review?.review}</p>
+            <p className="text-xs text-gray-400">Property: {review?.property?.name}</p>
             <button
               onClick={() => handleDelete(review._id)}
               className="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"

@@ -2,7 +2,7 @@ import Lottie from "lottie-react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginLottieData from "../assets/lottie/login.json";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import auth from "../firebase/firebase.init";
 import { toast, ToastContainer } from "react-toastify";
@@ -19,40 +19,53 @@ const LogIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const provider = new GoogleAuthProvider();
 
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
 
-    signInUser(email, password)
-      .then(() => {
-        const user =  getDBUser(email)
-        toast.success("Login successful!");
-        setUser(user);
-        navigate(location?.state ? location.state : "/");
-      })
-      .catch((err) => {
-        console.log(err);
-        setError({ ...error, login: err.message });
-        toast.error("Login failed! Please check your credentials.");
-      });
+    try {
+      const result = await signInUser(email, password);
+      if (!result?.user?.email) {
+        toast.error("Google sign-in failed! Please try again.");
+        return;
+      }
+      const user = await getDBUser(result.user.email);
+      console.log("🚀 ~ Fetched user from DB:", user);
+      if (!user) return;
+
+      setUser(user);
+      toast.success("Google sign-in successful!");
+      navigate(location?.state ? location.state : "/");
+    } catch (error) {
+      setError(error.response.data.message)
+      toast.error("Google sign-in failed! Please try again.");
+    }
   };
 
-  const handleGoogleSignIn = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user =  getDBUser(result.email)
-        setUser(user);
-        toast.success("Google sign-in successful!");
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      console.log("🚀 ~ Google sign-in result:", result);
+      if (!result?.user?.email) {
         toast.error("Google sign-in failed! Please try again.");
-      });
+        return;
+      }
+      const user = await getDBUser(result.user.email);
+      console.log("🚀 ~ Fetched user from DB:", user);
+      if (!user) return;
+
+      setUser(user);
+      toast.success("Google sign-in successful!");
+      navigate("/");
+    } catch (error) {
+      console.error("Google sign-in error:", error);
+      toast.error("Google sign-in failed! Please try again.");
+    }
   };
+
   useEffect(() => {
     if (!!user && typeof window != "undefined") {
       window.location.replace("/");

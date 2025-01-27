@@ -5,12 +5,16 @@ import { imageUpload } from "../../../api/utils";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import toast from "react-hot-toast";
 import { useAuth } from "../../../hook/useAuth";
+import { useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const AddProperty = () => {
+  const queryClient = useQueryClient();
   const [loading, setLoading] = useState(false);
   const [uploadImage, setUploadImage] = useState({name: 'Choose Image'});
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure()
+  const navigate = useNavigate()
   //handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,8 +48,11 @@ const AddProperty = () => {
       //post req
       await axiosSecure.post('/addProperty', propertyData)
       toast.success('Data Added Successfully!')
+      await queryClient.resetQueries({ queryKey: ["properties"], exact: false });
+      navigate('/dashboard/myAdded')
     }catch(err){
       console.log(err)
+      toast.error(err.response.data.message);
     }finally{
       setLoading(false)
     }

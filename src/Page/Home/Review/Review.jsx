@@ -3,10 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Loading from "../../Loading";
-import useAxiosSecure from "../../../hook/useAxiosSecure";
+import axios from "axios";
 
 const Review = () => {
-  const axiosSecure = useAxiosSecure();
+  // const axiosSecure = useAxiosSecure();
   // Initialize AOS for animations
   useEffect(() => {
     AOS.init();
@@ -14,9 +14,10 @@ const Review = () => {
 
   // Fetch reviews using useQuery
   const { data: reviews = [], isLoading, isError } = useQuery({
-    queryKey: ["reviews"],
+
+    queryKey: ["all-reviews"],
     queryFn: async () => {
-      const { data } = await axiosSecure.get(`/reviews`);
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/all-reviews?limit=3`);
       return data.map((review) => ({
         id: review._id,
         name: review.user.name,
@@ -25,8 +26,9 @@ const Review = () => {
         propertyTitle: review.property.name,
       }));
     },
+    retry: false
   });
-
+  console.log("🚀 ~ Review ~ reviews:", reviews)
   if (isLoading) {
     return <Loading />;
   }

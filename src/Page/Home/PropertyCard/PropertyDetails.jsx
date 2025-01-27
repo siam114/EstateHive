@@ -66,7 +66,7 @@ const PropertyDetails = () => {
   });
 
   const { data: reviews = [], refetch } = useQuery({
-    queryKey: ["reviews", id],
+    queryKey: ["reviews", {id}],
     queryFn: async () => {
       const { data } = await axios(
         `${import.meta.env.VITE_API_URL}/reviews/${id}`
@@ -84,7 +84,7 @@ const PropertyDetails = () => {
     description,
     image,
     agent,
-    verified,
+    status,
   } = property;
 
   if (isLoading) return <Loading />;
@@ -115,12 +115,12 @@ const PropertyDetails = () => {
             <strong>Agent:</strong> {agent?.name}{" "}
             <span
               className={`ml-2 text-sm px-2 py-1 rounded ${
-                verified
+                status== 'VERIFIED'
                   ? "bg-green-100 text-green-600"
                   : "bg-red-100 text-red-600"
               }`}
             >
-              {verified ? "Verified" : "Unverified"}
+              {status== 'VERIFIED' ? "Verified" : "Unverified"}
             </span>
           </p>
           <p className="text-gray-600 mb-6">{description}</p>
