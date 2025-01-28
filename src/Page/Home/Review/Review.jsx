@@ -55,7 +55,7 @@ const Review = () => {
 
         {/* Review Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reviews.slice(0, 3).map((review, index) => (
+          {reviews.map((review, index) => (
             <div
               key={index}
               className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"

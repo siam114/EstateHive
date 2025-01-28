@@ -4,7 +4,7 @@ import { useAuth } from "../../../hook/useAuth";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { shortImageName } from "../../../utilitis";
 import { TbFidgetSpinner } from "react-icons/tb";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -16,6 +16,7 @@ const UpdateCard = () => {
   const [uploadImage, setUploadImage] = useState({ name: "Choose Image" });
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,6 +50,7 @@ const UpdateCard = () => {
       await axiosSecure.patch(`/properties/${_id}`, propertyData);
       toast.success("Property updated Successfully!");
       await queryClient.resetQueries({ queryKey: ["properties"], exact: false });
+      navigate('/dashboard/myAdded')
     } catch (err) {
       console.log(err);
       toast.error(err.response.data.message);

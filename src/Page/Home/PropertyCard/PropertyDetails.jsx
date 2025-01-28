@@ -154,7 +154,7 @@ const PropertyDetails = () => {
                 <h4 className="font-bold">{review.user.name}</h4>
                 <p>{review.review}</p>
                 <span className="text-gray-500 text-sm">
-                  {new Date(review.createdAt).toLocaleDateString()}
+                  {new Date(review.created_at).toLocaleDateString()}
                 </span>
               </div>
             ))

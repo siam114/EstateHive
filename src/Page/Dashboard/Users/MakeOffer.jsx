@@ -2,7 +2,7 @@ import { useState } from "react";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Loading";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import isSuccessful from "../../../helper/status";
 
@@ -10,6 +10,7 @@ const MakeOffer = () => {
   const params = useParams();
   const [offerAmount, setOfferAmount] = useState("");
   const [setError] = useState("");
+  const navigate = useNavigate()
 
   const axiosSecure = useAxiosSecure();
 
@@ -51,6 +52,7 @@ const MakeOffer = () => {
       });
       if (isSuccessful(res.status)) {
         toast.success("Offer has been submitted");
+        navigate('/dashboard/propertyBought')
       } else {
         toast.error("Offer failed to submit");
       }

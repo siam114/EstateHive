@@ -107,7 +107,7 @@ import AgentRoute from "./AgentRoute";
           element: <PrivateRoute>
             <AgentRoute><UpdateCard/></AgentRoute>
           </PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/properties/${params.id}`)
+          loader: ({params}) => fetch(`https://my-assignment12-estate-hive-server.vercel.app/properties/${params.id}`)
          },
         
         //admin routes

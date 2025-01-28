@@ -69,7 +69,7 @@ const MyReviews = () => {
             </p>
             <p className="text-xs text-gray-500 mb-3">
               <span className="font-medium">Review Time:</span>{" "}
-              {new Date(review.createdAt).toLocaleDateString()}
+              {new Date(review.created_at).toLocaleDateString()}
             </p>
             <p className="text-sm text-gray-600 mb-1">
               <span className="font-medium">Review:</span> {review.review}

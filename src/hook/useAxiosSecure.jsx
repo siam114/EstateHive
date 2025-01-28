@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://my-assignment12-estate-hive-server.vercel.app'
 })
 const useAxiosSecure = () => {
     const navigate = useNavigate();
