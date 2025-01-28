@@ -25,6 +25,7 @@ import RequestProperty from "../Page/Dashboard/Agent/RequestProperty";
 import UpdateCard from "../Page/Dashboard/Agent/UpdateCard";
 import AdminRoute from "./AdminRoute";
 import VerifiedProperties from "../Page/Dashboard/Admin/VerifiedProperties";
+import AgentRoute from "./AgentRoute";
 
   const router = createBrowserRouter([
     {
@@ -57,45 +58,55 @@ import VerifiedProperties from "../Page/Dashboard/Admin/VerifiedProperties";
       children:[
         {
           index: true,
-          element: <Profile/>
+          element: <PrivateRoute><Profile/></PrivateRoute>
        },
        {
         path: 'reviews',
-        element: <MyReviews/>
+        element: <PrivateRoute><MyReviews/></PrivateRoute>
        },
        {
         path: 'wishlist',
-        element: <Wishlist/>
+        element: <PrivateRoute><Wishlist/></PrivateRoute>
        },
        {
         path:'property/:id/make_offer',
-        element: <MakeOffer/>
+        element: <PrivateRoute><MakeOffer/></PrivateRoute>
        },
      
        {
         path: 'propertyBought',
-        element: <PropertyBought/>
+        element: <PrivateRoute><PropertyBought/></PrivateRoute>
        },
        //agent
         {
           path: 'addProperty',
-          element: <AddProperty/>
+          element: <PrivateRoute>
+            <AgentRoute><AddProperty/></AgentRoute>
+          </PrivateRoute>
         },
         {
           path: 'myAdded',
-          element: <MyAddedProperty/>
+          element: <PrivateRoute>
+            <AgentRoute><MyAddedProperty/></AgentRoute>
+          </PrivateRoute>
         },
         {
           path:'mySold',
-          element: <MySoldProperty/>
+          element: <PrivateRoute>
+            <AgentRoute><MySoldProperty/></AgentRoute>
+          </PrivateRoute>
         },
         {
           path: 'request',
-          element: <RequestProperty/>
+          element: <PrivateRoute>
+            <AgentRoute><RequestProperty/></AgentRoute>
+          </PrivateRoute>
         },
         {
           path: 'update/:id',
-          element: <UpdateCard/>,
+          element: <PrivateRoute>
+            <AgentRoute><UpdateCard/></AgentRoute>
+          </PrivateRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/properties/${params.id}`)
          },
         
@@ -104,19 +115,27 @@ import VerifiedProperties from "../Page/Dashboard/Admin/VerifiedProperties";
         {
           path: 'manageUsers',
           element:
-            <AdminRoute><ManageUsers/></AdminRoute>
+            <PrivateRoute>
+              <AdminRoute><ManageUsers/></AdminRoute>
+            </PrivateRoute>
         },
         {
           path: 'manageProperties',
-          element: <ManageProperties/>
+          element: <PrivateRoute>
+            <AdminRoute><ManageProperties/></AdminRoute>
+          </PrivateRoute>
         },
         {
           path: 'manageReviews',
-          element: <ManageReviews/>
+          element: <PrivateRoute>
+            <AdminRoute><ManageReviews/></AdminRoute>
+          </PrivateRoute>
         },
         {
           path: 'advertisement',
-          element: <VerifiedProperties/>
+          element: <PrivateRoute>
+            <AdminRoute><VerifiedProperties/></AdminRoute>
+          </PrivateRoute>
         }
         
       ]
