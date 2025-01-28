@@ -12,7 +12,6 @@ const MySoldProperty = () => {
     },
     retry: false,
   });
-  console.log(soldProperties);
   if (isLoading) return <Loading />;
   const totalSold = soldProperties.reduce((sum, item) => sum + item.offer_amount, 0);
 

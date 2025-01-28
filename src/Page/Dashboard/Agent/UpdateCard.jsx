@@ -28,7 +28,6 @@ const UpdateCard = () => {
     const location = form.location.value;
     const image = form.image.files[0];
     const imageUrl = await imageUpload(image);
-    console.log(name, description, min_price, max_price, location, imageUrl);
 
     //agent info
     const agent_id = user._id;

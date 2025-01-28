@@ -18,7 +18,6 @@ const PropertyBought = () => {
     retry: false,
   });
 
-  console.log(properties);
   if (isLoading) return <Loading />;
 
   const handlePayClick = (property) => {

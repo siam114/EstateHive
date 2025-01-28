@@ -18,7 +18,6 @@ const Wishlist = () => {
       return res.data;
     },
   });
-  console.log("🚀 ~ Wishlist ~ wishlist:", wishlist)
 
   const handleDelete = async (id) => {
     try {

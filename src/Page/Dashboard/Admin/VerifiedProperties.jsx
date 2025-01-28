@@ -13,7 +13,6 @@ const VerifiedProperties = () => {
       return data;
     },
   });
-  console.log(properties)
   if (isLoading) return <Loading />;
 
   return (

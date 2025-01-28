@@ -86,7 +86,6 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         //get token and store client
         axiosPublic.post(`/user/${currentUser.email}`).then((res) => {
-          console.log("🚀 ~ initAuth ~ res:", res);
           if (!res.data) {
             toast.error("User Not Found");
             logOut();

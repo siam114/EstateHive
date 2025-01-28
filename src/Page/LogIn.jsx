@@ -24,7 +24,6 @@ const LogIn = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
 
     try {
       const result = await signInUser(email, password);
@@ -33,7 +32,6 @@ const LogIn = () => {
         return;
       }
       const user = await getDBUser(result.user.email);
-      console.log("🚀 ~ Fetched user from DB:", user);
       if (!user) return;
 
       setUser(user);
@@ -48,13 +46,11 @@ const LogIn = () => {
   const handleGoogleSignIn = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      console.log("🚀 ~ Google sign-in result:", result);
       if (!result?.user?.email) {
         toast.error("Google sign-in failed! Please try again.");
         return;
       }
       const user = await getDBUser(result.user.email);
-      console.log("🚀 ~ Fetched user from DB:", user);
       if (!user) return;
 
       setUser(user);

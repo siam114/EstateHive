@@ -24,7 +24,6 @@ const Register = () => {
 
       // Save user info in database
       const user = await saveUser(result?.user);
-      console.log("🚀 ~ handleGoogleSignIn ~ user:", user);
       setUser(user);
 
       navigate("/");

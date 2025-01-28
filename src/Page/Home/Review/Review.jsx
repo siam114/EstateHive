@@ -28,7 +28,7 @@ const Review = () => {
     },
     retry: false
   });
-  console.log("🚀 ~ Review ~ reviews:", reviews)
+
   if (isLoading) {
     return <Loading />;
   }

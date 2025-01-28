@@ -19,7 +19,6 @@ const MyReviews = () => {
       return res.data;
     },
   });
-  console.log(reviews)
 
   // Function to handle delete
   const handleDelete = async (id) => {
@@ -35,7 +34,6 @@ const MyReviews = () => {
          if(result.isConfirmed) {
            axiosSecure.delete(`/delete-review/${id}`)
            .then((res) => {
-             console.log("🚀 ~ .then ~ res:", res)
              if(isSuccessful(res.status)) {
                 refetch();
                  Swal.fire({

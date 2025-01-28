@@ -1,13 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Loading";
 import MyPropertyCard from "./MyPropertyCard";
-import { useAuth } from "../../../hook/useAuth";
 import useAxiosSecure from "./../../../hook/useAxiosSecure";
 
 const MyAddedProperty = () => {
   const axioSecure = useAxiosSecure();
-  const { user } = useAuth();
-  console.log(user);
   const { data: properties, isLoading } = useQuery({
     queryKey: ["properties","user-properties"],
     queryFn: async () => {
@@ -17,7 +14,6 @@ const MyAddedProperty = () => {
     },
   });
   if (isLoading) return <Loading />;
-  // console.log(properties)
   return (
     <div>
       {properties && properties.length > 0 ? (

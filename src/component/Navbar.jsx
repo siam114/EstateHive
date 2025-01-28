@@ -11,7 +11,6 @@ import { useAuth } from "../hook/useAuth";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { user, logOut } = useAuth();
-  console.log("🚀 ~ Navbar ~ user:", user)
   const links = (
     <div className=" flex flex-col md:flex-row gap-2 md:gap-5 font-semibold">
       <NavLink to="/">Home</NavLink>

@@ -8,7 +8,6 @@ import isSuccessful from "../../../helper/status";
 
 const MakeOffer = () => {
   const params = useParams();
-  console.log("🚀 ~ MakeOffer ~ id:", params.id);
   const [offerAmount, setOfferAmount] = useState("");
   const [setError] = useState("");
 
@@ -27,7 +26,7 @@ const MakeOffer = () => {
     },
     retry: false,
   });
-  console.log("🚀 ~ property ~ property:", property);
+
   if (isLoading) return <Loading />;
   if (!property) return <p>No data available!</p>;
 

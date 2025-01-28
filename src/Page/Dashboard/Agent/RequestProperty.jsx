@@ -40,7 +40,6 @@ const RequestProperty = () => {
     } catch (error) {
       console.error(`Error updating status to ${status}:`, error);
     }
-    console.log("Status Change Data:", { offerId, status });
   };
 
   return (

@@ -20,14 +20,12 @@ const PropertyDetails = () => {
 
   const handleSubmitReview = async (review) => {
     try {
-      console.log("Submitted Review:", review);
       const res = await axiosSecure.post(
         `/add-review`,
         { user_id: user._id, property_id: id, review }
       );
 
       if (isSuccessful(res.status)) {
-        // console.log("Review added successfully:", res.data);
         toast.success('Review added successfully')
         refetch()
       } else {
