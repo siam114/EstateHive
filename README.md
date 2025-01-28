@@ -4,11 +4,18 @@
 EstateHive is a modern Real Estate Platform where users can buy and sell properties, and agents can manage their listings with ease. The platform offers a seamless experience for both property buyers and sellers, ensuring convenience and transparency.  
 
 ## Admin Credentials  
-- **Username**: admin  
-- **Password**: admin123  
+- **Username**: siam  
+- **email**: 	smsiam@gmail.com 
+- **Password**: SMsiam114@ 
+
+## Agent Credentials  
+- **Username**: sabila 
+- **email**: 	sab@gmail.com 
+- **Password**: SMsiam114@  
 
 ## Live Site URL  
-[Visit EstateHive Live]()  
+[Visit EstateHive Live](https://estatehive-357ff.web.app/)  
+[Visit EstateHive Live with firebase](https://estatehive-357ff.firebaseapp.com/)  
 
 ---
 
