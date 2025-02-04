@@ -50,7 +50,25 @@ EstateHive is a modern Real Estate Platform where users can buy and sell propert
 
 10. **Comprehensive Analytics**:  
     - Insights and analytics for agents to monitor property views, leads, and sales.  
+---
 
+## How to Run Locally
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-repo/EstateHive.git
+   cd EstateHive
+2. **Install dependencies:**:
+   ```bash
+   npm install
+3. **Start the development server:**:
+   ```bash
+   npm run dev 
+2. **To build for production::**:
+   ```bash
+   npm run build
+   
+---
 ## Getting Started  
 
 To explore EstateHive, use the live link above or log in as an admin with the provided credentials to manage and view the platform.  
