@@ -26,6 +26,7 @@ import UpdateCard from "../Page/Dashboard/Agent/UpdateCard";
 import AdminRoute from "./AdminRoute";
 import VerifiedProperties from "../Page/Dashboard/Admin/VerifiedProperties";
 import AgentRoute from "./AgentRoute";
+import Contact from "../component/Contact";
 
   const router = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ import AgentRoute from "./AgentRoute";
           path: '/property/:id',
           element: <PrivateRoute><PropertyDetails/></PrivateRoute>
         },
+        {
+          path: 'contact',
+          element: <Contact/>
+        }
       
        
       ]
