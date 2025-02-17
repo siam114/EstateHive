@@ -23,6 +23,7 @@ const Navbar = () => {
     <div className="flex flex-col md:flex-row gap-2 md:gap-5 font-semibold">
          <NavLink to="/">Home</NavLink>
          <NavLink to="/about">About Us</NavLink>
+         <NavLink to="/allProperties">All properties</NavLink>
     </div>
   )
   return (
