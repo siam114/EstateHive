@@ -42,7 +42,7 @@ const Review = () => {
   }
 
   return (
-    <section className="py-12 bg-gray-100">
+    <section className="py-12 ">
       <div className="container mx-auto px-6">
         {/* Heading */}
         <h2

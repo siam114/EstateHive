@@ -34,7 +34,7 @@ const Home = () => {
       </div>
       <FeaturedProperties />
       <Review />
-        {/* <Newslatter /> */}
+        <Newslatter />
       <div className="container mx-auto my-10">
         <Faq />
       </div>

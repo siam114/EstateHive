@@ -1,17 +1,17 @@
 const Newslatter = () => {
   return (
     <div>
-      <section className="bg-gray-50">
+      <section className="bg-gray-100">
         <div className="p-8 md:p-12 lg:px-16 lg:py-24">
           <div className="mx-auto max-w-lg text-center">
-            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit
+            <h2 className="text-4xl font-bold text-gray-900 md:text-3xl">
+              Welcome to EstateHive – Your Trusted Real Estate Platform
             </h2>
 
             <p className="hidden text-gray-500 sm:mt-4 sm:block">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae
-              dolor officia blanditiis repellat in, vero, aperiam porro ipsum
-              laboriosam consequuntur exercitationem incidunt tempora nisi?
+              Find your dream property with EstateHive. Whether you&apos;re
+              buying, selling, or renting, we provide the best listings and
+              expert guidance to help you make informed real estate decisions.
             </p>
           </div>
 
@@ -31,9 +31,9 @@ const Newslatter = () => {
 
               <button
                 type="submit"
-                className="group mt-4 flex w-full items-center justify-center gap-2 rounded-md bg-rose-600 px-5 py-3 text-white transition focus:ring-3 focus:ring-yellow-400 focus:outline-hidden sm:mt-0 sm:w-auto"
+                className="group mt-4 flex w-full items-center justify-center gap-2 rounded-md bg-[#363e94] px-5 py-3 text-white transition focus:ring-3 focus:ring-yellow-400 focus:outline-hidden sm:mt-0 sm:w-auto"
               >
-                <span className="text-sm font-medium"> Sign Up </span>
+                <span className="text-sm font-medium"> Submit </span>
 
                 <svg
                   className="size-5 rtl:rotate-180"

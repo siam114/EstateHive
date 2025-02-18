@@ -1,6 +1,7 @@
 const Faq = () => {
     return (
       <div>
+        <h2 className="text-4xl font-bold text-center mb-8">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details
             className="group rounded-lg bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden"
