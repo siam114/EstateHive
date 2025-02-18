@@ -8,6 +8,7 @@ import Loading from "../../Loading";
 import PropertyCard from "../PropertyCard/PropertyCard";
 import Faq from "./Faq";
 import Newslatter from "../../../component/Newslatter";
+import LatestProperty from "../../../component/LatestProperty";
 
 const Home = () => {
   const { data: properties, isLoading } = useQuery({
@@ -33,6 +34,7 @@ const Home = () => {
         ))}
       </div>
       <FeaturedProperties />
+      <LatestProperty/>
       <Review />
         <Newslatter />
       <div className="container mx-auto my-10">
