@@ -4,8 +4,8 @@ const Newslatter = () => {
       <section className="bg-gray-100">
         <div className="p-8 md:p-12 lg:px-16 lg:py-24">
           <div className="mx-auto max-w-lg text-center">
-            <h2 className="text-4xl font-bold text-gray-900 md:text-3xl">
-              Welcome to EstateHive – Your Trusted Real Estate Platform
+            <h2 className="lg:text-4xl text-2xl font-bold text-gray-900 md:text-3xl">
+             Subscribe To Our Newsletter
             </h2>
 
             <p className="hidden text-gray-500 sm:mt-4 sm:block">
