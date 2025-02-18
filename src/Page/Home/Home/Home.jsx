@@ -7,6 +7,7 @@ import axios from "axios";
 import Loading from "../../Loading";
 import PropertyCard from "../PropertyCard/PropertyCard";
 import Faq from "./Faq";
+import Newslatter from "../../../component/Newslatter";
 
 const Home = () => {
   const { data: properties, isLoading } = useQuery({
@@ -33,8 +34,9 @@ const Home = () => {
       </div>
       <FeaturedProperties />
       <Review />
+        {/* <Newslatter /> */}
       <div className="container mx-auto my-10">
-      <Faq/>
+        <Faq />
       </div>
     </div>
   );
