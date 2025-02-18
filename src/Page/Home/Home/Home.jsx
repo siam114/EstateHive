@@ -34,9 +34,9 @@ const Home = () => {
         ))}
       </div>
       <FeaturedProperties />
-      <LatestProperty/>
+      <LatestProperty />
       <Review />
-        <Newslatter />
+      <Newslatter />
       <div className="container mx-auto my-10">
         <Faq />
       </div>

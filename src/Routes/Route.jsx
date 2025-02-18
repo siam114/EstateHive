@@ -27,11 +27,13 @@ import AdminRoute from "./AdminRoute";
 import VerifiedProperties from "../Page/Dashboard/Admin/VerifiedProperties";
 import AgentRoute from "./AgentRoute";
 import Contact from "../component/Contact";
+import ErrorPage from "../Page/ErrorPage";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Main/>,
+      errorElement: <ErrorPage/>,
       children: [
         {
             path: '/',
