@@ -5,7 +5,7 @@ const OfficeLocation = () => {
         <div className="text-center mb-10">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">📍 Visit Our Office</h2>
           <p className="text-gray-500 text-lg">
-            We are located in the heart of Mirpur, Dhaka. Come visit us at <br />
+            We are located in the Heart Foundation of Mirpur, Dhaka. Come visit us at <br />
             <span className="text-blue-600 font-semibold">97/2 West Monipur, Mirpur, Dhaka-1216</span>
           </p>
         </div>

@@ -9,6 +9,7 @@ import PropertyCard from "../PropertyCard/PropertyCard";
 import Faq from "./Faq";
 import Newslatter from "../../../component/Newslatter";
 import LatestProperty from "../../../component/LatestProperty";
+import OfficeLocation from "../../../component/Modal/OfficeLocation";
 
 const Home = () => {
   const { data: properties, isLoading } = useQuery({
@@ -39,6 +40,7 @@ const Home = () => {
       <Newslatter />
       <div className="container mx-auto my-10">
         <Faq />
+        <OfficeLocation/>
       </div>
     </div>
   );
