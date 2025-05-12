@@ -1,11 +1,19 @@
+import { motion } from 'framer-motion';
+
 const OfficeLocation = () => {
   return (
    <section className="w-full bg-white pt-10">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="max-w-7xl mx-auto px-4 md:px-8"
+      >
         <div className="text-center mb-10">
           <h2 className="text-4xl font-bold text-gray-800 mb-4"> Visit Our Office</h2>
           <p className="text-gray-500 text-lg">
-            We are located in the Heart Foundation of Mirpur, Dhaka. Come visit us at <br />
+            We are located in the heart of Mirpur, Dhaka. Come visit us at <br />
             <span className="text-blue-600 font-semibold">97/2 West Monipur, Mirpur, Dhaka-1216</span>
           </p>
         </div>
@@ -22,7 +30,7 @@ const OfficeLocation = () => {
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
