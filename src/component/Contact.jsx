@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet-async";
 import { FaFacebook, FaLinkedin, FaTwitter, FaGithub, FaEnvelope, FaPhone } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Contact = () => {
     return (
         <div className="flex flex-col justify-center items-center bg-white py-10">
+            <Helmet>
+                    <title>EstateHive | Contact Us</title>
+                  </Helmet>
             
             {/* Title */}
             <h1 className="text-4xl font-bold text-gray-800 mb-4">Contact Us</h1>
