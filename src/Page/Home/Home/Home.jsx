@@ -40,7 +40,9 @@ const Home = () => {
       <Newslatter />
       <div className="container mx-auto my-10">
         <Faq />
-        <OfficeLocation/>
+       <div className="my-10">
+         <OfficeLocation/>
+       </div>
       </div>
     </div>
   );
