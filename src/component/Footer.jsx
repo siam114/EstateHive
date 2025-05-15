@@ -21,7 +21,7 @@ const Footer = () => {
             <h2 className="text-3xl font-bold text-white">EstateHive</h2>
           </div>
           <p className="md:w-[500px]">
-            <span className="text-yellow-300">EstateHive&apos;s</span> Real
+            <span>EstateHive&apos;s</span> Real
             Estate Information platform provides the latest updates and insights
             into the property market. Explore a wide range of real estate
             options tailored to meet your preferences and needs.
