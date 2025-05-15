@@ -91,7 +91,7 @@ const Navbar = () => {
               <img
                 data-tooltip-id="user-tooltip"
                 data-tooltip-content={user?.name || "No username available"}
-                className="w-8 h-8 rounded-full"
+                className="w-8 h-8 rounded-full hidden sm:block"
                 referrerPolicy="no-referrer"
                 src={user?.image ?? ""}
                 alt=""
