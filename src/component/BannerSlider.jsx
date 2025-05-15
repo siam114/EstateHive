@@ -30,7 +30,7 @@ const BannerSlider = () => {
   
             return (
               <SwiperSlide key={index}>
-                <div className="w-full h-[calc(100vh-64px)] aspect-video">
+                <div className="w-full sm:h-[calc(100vh-64px)] aspect-video">
                   <img 
                   loading='lazy'
                     src={slide[`coverImg${index}`]} 
